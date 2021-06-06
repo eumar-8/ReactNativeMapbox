@@ -3,10 +3,13 @@ import {TouchableOpacity, View, Text} from 'react-native';
 import MapboxGL from '@react-native-mapbox-gl/maps';
 import {lineString as makeLineString, LineString, Feature} from '@turf/helpers';
 import {styles} from './style';
+import {
+  MAPBOX_API_KEY,
+  INITIAL_CENTER_COORDINATES,
+  INITIAL_ZOOM,
+} from './constants';
 
-MapboxGL.setAccessToken(
-  'pk.eyJ1IjoiZXVtYXItOCIsImEiOiJja3BpbjhsNHkwMHF0Mm9vY3J6NWJ0bDMxIn0.noL_RAwc2Kj86fdBq1oWTw',
-);
+MapboxGL.setAccessToken(MAPBOX_API_KEY);
 
 type Point = [number, number];
 type Points = Point[];
@@ -37,16 +40,7 @@ const App = (): JSX.Element => {
         key={`point-${coordinates[0]}-${coordinates[1]}`}
         id="pointAnnotation"
         coordinate={coordinates}>
-        <View
-          style={{
-            height: 30,
-            width: 30,
-            backgroundColor: '#00cccc',
-            borderRadius: 50,
-            borderColor: '#fff',
-            borderWidth: 3,
-          }}
-        />
+        <View style={styles.annotation} />
       </MapboxGL.PointAnnotation>
     );
   };
@@ -68,13 +62,13 @@ const App = (): JSX.Element => {
     <View style={styles.containerMap}>
       <MapboxGL.MapView
         styleURL={MapboxGL.StyleURL.Street}
-        zoomLevel={16}
-        centerCoordinate={[3.33624, 6.57901]}
+        zoomLevel={INITIAL_ZOOM}
+        centerCoordinate={INITIAL_CENTER_COORDINATES}
         style={styles.mapViewContainer}
         onPress={evt => addPoint(evt)}>
         <MapboxGL.Camera
           zoomLevel={14}
-          centerCoordinate={[3.33624, 6.57901]}
+          centerCoordinate={INITIAL_CENTER_COORDINATES}
           animationMode={'flyTo'}
           animationDuration={0}></MapboxGL.Camera>
         {points.map(coordinates => renderAnnotation(coordinates))}

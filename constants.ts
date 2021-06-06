@@ -1,0 +1,3 @@
+export const MAPBOX_API_KEY = 'pk.eyJ1IjoiZXVtYXItOCIsImEiOiJja3BpbjhsNHkwMHF0Mm9vY3J6NWJ0bDMxIn0.noL_RAwc2Kj86fdBq1oWTw';
+export const INITIAL_CENTER_COORDINATES = [3.33624, 6.57901];
+export const INITIAL_ZOOM = 16;

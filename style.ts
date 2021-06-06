@@ -23,5 +23,13 @@ export const styles = StyleSheet.create({
         height: '100%',
         width: '100%'
     },
-    mapViewContainer: { flex: 1 }
+    mapViewContainer: { flex: 1 },
+    annotation: {
+        height: 30,
+        width: 30,
+        backgroundColor: '#00cccc',
+        borderRadius: 50,
+        borderColor: '#fff',
+        borderWidth: 3,
+    }
 });
